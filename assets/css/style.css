@@ -1,0 +1,68 @@
+:root {
+	--reddit-red: #ff3d3d;
+	--yahoo-purple: #d600d6;
+}
+
+
+* {
+	box-sizing: border-box;
+	color: honeydew;
+}
+
+
+body {
+	background-color: #b2c4e7;
+	margin: 0%;
+	padding: 0%;
+	width: 100vw;
+	height: 100vh;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+nav {
+	background-color: aquamarine;
+	padding: .5%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	height: 8%;
+}
+
+main {
+	padding: 2%;
+	display: grid;
+	grid-template-columns: 6fr 4fr;
+	grid-template-rows: 1fr 1fr;
+	column-gap: 2%;
+	row-gap: 2%;
+	text-align: center;
+	height: 90%;
+}
+
+#search {
+	line-height: 1.5em;
+	height: min-content;
+	color: darkslategray;
+	border-radius: 7px;
+	border: solid 2px var(--reddit-red);
+}
+
+.reddit-bar {
+	background-color: var(--reddit-red);
+	grid-column: 1;
+	grid-row: 1/ -1;
+}
+
+.stock-charts {
+	background-color: var(--yahoo-purple);
+}
+
+.stocks {
+	background-color: teal;
+}
+
+.ry-component {
+	
+}
