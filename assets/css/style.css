@@ -1,6 +1,6 @@
 :root {
-	--reddit-red: #ff3d3d;
-	--yahoo-purple: #d600d6;
+	--reddit-red: #f14668;
+	--yahoo-purple: #f000f0;
 }
 
 
@@ -32,13 +32,8 @@ nav {
 
 main {
 	padding: 2%;
-	display: grid;
-	grid-template-columns: 6fr 4fr;
-	grid-template-rows: 1fr 1fr;
-	column-gap: 2%;
-	row-gap: 2%;
-	text-align: center;
-	height: 90%;
+	height: 92%;
+	/* background-color: chocolate; */
 }
 
 #search {
@@ -46,23 +41,9 @@ main {
 	height: min-content;
 	color: darkslategray;
 	border-radius: 7px;
-	border: solid 2px var(--reddit-red);
+	/* border: solid 2px var(--reddit-red); */
 }
 
-.reddit-bar {
-	background-color: var(--reddit-red);
-	grid-column: 1;
-	grid-row: 1/ -1;
-}
-
-.stock-charts {
+[id^="yahoo-"] {
 	background-color: var(--yahoo-purple);
-}
-
-.stocks {
-	background-color: teal;
-}
-
-.ry-component {
-	
 }
