@@ -1,95 +1,79 @@
-// Reddit sample data
-fetch('https://www.reddit.com/r/wallstreetbets.json', {
-})
-	.then(function (response) {
-		return response.json();
-	})
-	.then(
-		function (data) {
-			console.log(data);
+fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=5m&symbol=GME&range=1d&region=US", {
+		"method": "GET",
+		"headers": {
+			"x-rapidapi-key": "49c262adb7msh32c74269c34335fp14ab31jsn4366026eeabe",
+			"x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
 		}
-	);
-
-
-
-
-
-
-fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-charts?symbol=HYDR.ME&interval=5m&range=1d&region=US&comparisons=%5EGDAXI%2C%5EFCHI", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "49c262adb7msh32c74269c34335fp14ab31jsn4366026eeabe",
-		"x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
-	}
-})
-.then(response => {
-	return response.json();
-})
-.then(data => {
-	console.log(data);
-});
-
-// var options = {
-// 	series: [{
-// 		name: 'stockOven',
-// 		type: 'candlestick',
-// 		data:[{
-// 			x:
-// 			y:
-// 		}]
-// 	}]
-// }
-	
-	
-// drawChart();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// historical data from yahoo finance api
-fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v3/get-historical-data?symbol=AMRN&region=US", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "49c262adb7msh32c74269c34335fp14ab31jsn4366026eeabe",
-		"x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
-	}
-})
-	.then(response => {
-		console.log(response);
 	})
-	.catch(err => {
-		console.error(err);
-	});
+	.then(response => response.json())
+	.then(data => {
+		var candlePoints = [];
 
+		for (let i = 0; i < data.chart.result[0].timestamp.length; i++) {
+			const timestamp = new Date(data.chart.result[0].timestamp[i] * 1000);
 
+			const close = data.chart.result[0].indicators.quote[0].close[i];
+			const high = data.chart.result[0].indicators.quote[0].high[i];
+			const low = data.chart.result[0].indicators.quote[0].low[i];
+			const open = data.chart.result[0].indicators.quote[0].open[i];
 
-	// Top movers from yahoo finance api
-fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-movers?region=US&lang=en-US&start=0&count=6", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "49c262adb7msh32c74269c34335fp14ab31jsn4366026eeabe",
-		"x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
-	}
-})
-	.then(response => {
-	return response.json()
-	})
-	.then(data =>{
-	console.log(data)
-	})
-	.catch(err => {
-	console.error(err);
+			candlePoints.push({
+				x: timestamp,
+				y: [close, high, low, open]
+			});
+		}
+
+		console.log(candlePoints);
+
+		var options = {
+			series: [{
+				name: "line",
+				type: "line",
+				data: []
+			},{
+				name: "candle",
+				type: "candlestick",
+				data: candlePoints
+			}],
+			chart: {
+				height: 300,
+				type: 'line',
+			},
+			title: {
+				text: 'Stock Chart',
+				align: 'left'
+			},
+			stroke: {
+				width: [3, 1]
+			},
+			tooltip: {
+				shared: true,
+				custom: [
+					function ({
+						seriesIndex,
+						dataPointIndex,
+						w
+					}) {
+						return w.globals.series[seriesIndex][dataPointIndex]
+					},
+					function ({
+						seriesIndex,
+						dataPointIndex,
+						w
+					}) {
+						var o = w.globals.seriesCandleO[seriesIndex][dataPointIndex]
+						var h = w.globals.seriesCandleH[seriesIndex][dataPointIndex]
+						var l = w.globals.seriesCandleL[seriesIndex][dataPointIndex]
+						var c = w.globals.seriesCandleC[seriesIndex][dataPointIndex]
+						return ('')
+					}
+				]
+			},
+			xaxis: {
+				type: 'datetime'
+			}
+		};
+
+		var chart = new ApexCharts(document.querySelector("#stock-graph"), options);
+		chart.render();
 	});
