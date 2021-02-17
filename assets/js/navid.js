@@ -18,7 +18,7 @@ fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interv
 		"x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
 	}
 })
-	.then(response.json => {
+	.then(response => {
 		console.log(response);
 		var chart = document.getElementById('chart-image');
 
