@@ -33,16 +33,30 @@ nav {
 main {
 	padding: 2%;
 	height: 92%;
-	/* background-color: chocolate; */
 }
 
 #search {
-	line-height: 1.5em;
-	height: min-content;
 	color: darkslategray;
-	border-radius: 7px;
-	/* border: solid 2px var(--reddit-red); */
+	border-radius: 0 7px 7px 0;
+	border: solid 2px #a5a5a5;
+	border-left: none;
 }
+
+.search-widget {
+	display: flex;
+	flex-direction: row;
+	height: 2em;
+	font-size: inherit;
+}
+	.search-widget i {
+		font-size: inherit;
+		text-align: center;
+		width: 1.5em;
+		line-height: 1.5em;
+		background-color: #f14668;
+		color: honeydew;
+		height: 100%;
+	}
 
 [id^="yahoo-"] {
 	background-color: var(--yahoo-purple);
