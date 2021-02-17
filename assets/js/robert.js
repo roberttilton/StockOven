@@ -9,7 +9,7 @@ fetch('https://www.reddit.com/r/wallstreetbets.json', {
 			console.log(data.data.children[0]);
 			var i;
 			for (i = 0; i <= 5; i++) {
-				redditData.textContent = JSON.stringify(data.data.children[i]);
+				redditData.textContent = data.data.children[i].data.title;
 			}
 			// data.after.children[12]
 		}
