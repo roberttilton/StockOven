@@ -14,12 +14,14 @@ fetch('https://www.reddit.com/r/wallstreetbets/hot.json', {
 					var redditPosts = document.createElement('h3');
 					redditPosts.textContent = data.data.children[i].data.title;
 					var redditUsers = document.createElement('h3');
-					redditUsers.textContent= data.data.children[i].data.username;
+					redditUsers.textContent= data.data.children[i].data.author;
 					var redditScore = document.createElement('h3');
 					redditScore.textContent= data.data.children[i].data.score;
 					var redditURL = document.createElement('h3');
 					redditURL.textContent= data.data.children[i].data.url;
 					redditContent.appendChild(redditPosts);
+					redditContent.appendChild(redditUsers);
+					redditContent.appendChild(redditScore);
 				}
 			}
 		}
