@@ -55,7 +55,7 @@ main {
 	grid-row: 1/ -1;
 }
 
-.stock-charts {
+#stock-charts {
 	background-color: var(--yahoo-purple);
 }
 

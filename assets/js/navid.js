@@ -1,5 +1,5 @@
 // Reddit sample data
-fetch('https://www.reddit.com/r/escapefromtarkov.json', {
+fetch('https://www.reddit.com/r/wallstreetbets.json', {
 })
 	.then(function (response) {
 		return response.json();
@@ -18,10 +18,9 @@ fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interv
 		"x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
 	}
 })
-	.then(response => {
+	.then(response.json => {
 		console.log(response);
 		var chart = document.getElementById('chart-image');
-		chart.
 
 	})
 	.catch(err => {
