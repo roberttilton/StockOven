@@ -31,8 +31,7 @@ fetch('https://www.reddit.com/r/wallstreetbets/hot.json', {})
 					redditRedirect.appendChild(redditScore);
 					redditRedirect.appendChild(redditPosts);
 					redditRedirect.addEventListener("click", function () {
-						window.location.href = `https://www.reddit.com${link}`;
-						console.log(link);
+						window.open(`https://www.reddit.com${link}`, "_blank");
 					})
 					redditRedirect.classList.add("posts");
 					redditContent.appendChild(redditRedirect);
