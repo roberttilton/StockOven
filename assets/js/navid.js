@@ -1,4 +1,4 @@
-const RAPID_API_KEY = config.RAPID_API_KEY;
+const RAPID_API_KEY = "49c262adb7msh32c74269c34335fp14ab31jsn4366026eeabe";
 
 function fetchStock(userStock) {
 	fetch(`https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=5m&symbol=${userStock}&range=1d&region=US`, {
