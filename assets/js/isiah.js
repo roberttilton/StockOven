@@ -3767,18 +3767,6 @@ $(function() {
   });
 
 
-
-
-
-
-
-//   var stockInput = $("#search").val()
-//  $("#button").click(function getStocks() {
-// 	//  fetchStock(stockInput) wait til we merge
-// 	 console.log(stockInput)
-
-//  })
-
  var searchButton = document.querySelector("#button");
 
  searchButton.addEventListener("click", function(event) {
