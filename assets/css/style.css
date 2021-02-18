@@ -48,15 +48,21 @@ main {
 	height: 2em;
 	font-size: inherit;
 }
-	.search-widget i {
-		font-size: inherit;
-		text-align: center;
-		width: 1.5em;
-		line-height: 1.5em;
-		background-color: #f14668;
-		color: honeydew;
-		height: 100%;
-	}
+
+.search-widget i {
+	font-size: inherit;
+	text-align: center;
+	width: 1.5em;
+	line-height: 1.5em;
+	background-color: #f14668;
+	color: honeydew;
+	height: 100%;
+}
+
+#stock-graph {
+	background-color: black;
+	color: white;
+}
 
 [id^="yahoo-"] {
 	background-color: var(--yahoo-purple);
