@@ -37,8 +37,12 @@ function fetchStock(userStock) {
 
 			var chart = new ApexCharts(document.querySelector("#stock-graph"), options);
 			chart.render();
-		});
-}
 
+			var triggers = document.querySelector(".resize-triggers");
+			triggers.parentNode.removeChild(triggers);
+			console.log("attempted to remove triggers");
+		});
+
+}
 
 fetchStock("AMZN");
