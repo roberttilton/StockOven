@@ -33,6 +33,7 @@ fetch('https://www.reddit.com/r/wallstreetbets/hot.json', {
 						window.location.href = `https://www.reddit.com${link}`;
 						console.log(link);
 					})
+					redditRedirect.classList.add("posts");
 					redditContent.appendChild(redditRedirect);
 				}
 			}
