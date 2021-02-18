@@ -65,3 +65,17 @@ main {
 		color: #794141;
 		height: 100%;
 	}
+
+[id^="yahoo-"] {
+	background-color: var(--yahoo-purple);
+}
+
+#reddit-content {
+	overflow: scroll;
+	overflow-x: hidden;
+	max-width: 100%;
+}
+
+.posts {
+	background-color: black;
+}
