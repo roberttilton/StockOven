@@ -1,4 +1,5 @@
 function fetchStock(stockInput) {
+	document.querySelector("#stock-graph").innerHTML = "";
 	fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=5m&symbol=" + stockInput + "&range=1d&region=US", {
 			"method": "GET",
 			"headers": {
@@ -36,7 +37,7 @@ function fetchStock(stockInput) {
 					height: 300,
 					type: 'candlestick'
 				},
-				title: {text: 'Stock Chart',align: 'left'},
+				title: {text: stockInput + ' Stock Chart',align: 'left'},
 				theme: {mode: "dark"},
 				xaxis: {type: 'datetime'}
 			};

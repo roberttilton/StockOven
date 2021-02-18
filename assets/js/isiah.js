@@ -3783,5 +3783,9 @@ $(function() {
 
  searchButton.addEventListener("click", function(event) {
 	event.preventDefault();
+	var stockSearch = document.querySelector("#search").value;
+	console.log(stockSearch)
+	fetchStock(stockSearch);
+
  });
 
