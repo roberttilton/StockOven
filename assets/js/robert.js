@@ -1,5 +1,5 @@
 // declared variable linking to the Reddit div in the HTML
-var redditContent = document.getElementById('reddit-content');
+var redditContent = document.getElementById('reddit');
 // fetching the data from reddit
 fetch('https://www.reddit.com/r/wallstreetbets/hot.json', {})
 	.then(function (response) {
@@ -19,15 +19,17 @@ fetch('https://www.reddit.com/r/wallstreetbets/hot.json', {})
 					// username parsing
 					var redditUsers = document.createElement('span');
 					redditUsers.textContent = data.data.children[i].data.author;
+					redditUsers.className = "username";
 					// upvote/score parsing
 					var redditScore = document.createElement('span');
 					redditScore.textContent = data.data.children[i].data.score;
+					redditScore.className = "post-score";
 					// url parsing, at the moment not utilized
 					const link = data.data.children[i].data.permalink;
 					// adding the results to the page
-					redditRedirect.appendChild(redditPosts);
 					redditRedirect.appendChild(redditUsers);
 					redditRedirect.appendChild(redditScore);
+					redditRedirect.appendChild(redditPosts);
 					redditRedirect.addEventListener("click", function () {
 						window.location.href = `https://www.reddit.com${link}`;
 						console.log(link);
