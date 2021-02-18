@@ -1,14 +1,15 @@
+const RAPID_API_KEY = config.RAPID_API_KEY;
+
 function fetchStock(userStock) {
 	fetch(`https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=5m&symbol=${userStock}&range=1d&region=US`, {
 			"method": "GET",
 			"headers": {
-				"x-rapidapi-key": "49c262adb7msh32c74269c34335fp14ab31jsn4366026eeabe",
+				"x-rapidapi-key": RAPID_API_KEY,
 				"x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
 			}
 		}
 	).then(response => response.json())
 		.then(data => {
-			console.log(data);
 			var candlePoints = [];
 
 			for (let i = 0; i < data.chart.result[0].timestamp.length; i += 5) {
@@ -26,13 +27,11 @@ function fetchStock(userStock) {
 			}
 
 			const containerHeight = document.querySelector("#stock-graph").clientHeight;
-			console.log(containerHeight);
 
 			var options = {
 				series: [{name: "candle", type: "candlestick", data: candlePoints}],
 				chart: {height: containerHeight, type: 'candlestick'},
-				title: {text: `${userStock} Stock Chart`, align: 'left'},
-				// stroke: {width: 3},
+				title: {text: `${userStock} Stock Chart`},
 				xaxis: {type: 'datetime'}
 			};
 
