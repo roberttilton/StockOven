@@ -69,7 +69,11 @@ main {
 	overflow-x: hidden;
 	max-width: 100%;
 }
-
-.posts {
+/* temporary styling added below so the elements are visible to the human eye */
+.reddit-post {
 	background-color: black;
+}
+
+.sort-button {
+	background-color:black;
 }
