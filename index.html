@@ -19,7 +19,7 @@
 
 	<body>
 
-		<nav>
+		<nav class="notification is-primary">
 			<h1>StockOven</h1>
 
 			<div class="search-widget">
@@ -37,18 +37,19 @@
 
 			<div class="tile">
 				<div class="tile is-parent is-vertical">
-					<div id="yahoo-top" class="tile is-child notification">Yahoo Top</div>
-					<div id="yahoo-bottom" class="tile is-child notification">Yahoo Bottom</div>
+					<div id="stock-graph" class="tile is-child notification is-light"></div>
+					<div id="top-movers" class="tile is-child notification is-info">Top Movers of the Week</div>
 				</div>
 			</div>
 		</main>
 
 		<!-- External JavaScript -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script> -->
+		<script src="assets/js/apexcharts.js"></script>
 
 		<!-- Internal JavaScript -->
 		<script src="assets/js/isiah.js"></script>
-		<script src="assets/js/krushil.js"></script>
+		<!-- <script src="assets/js/krushil.js"></script> -->
 		<script src="assets/js/navid.js"></script>
 		<script src="assets/js/robert.js"></script>
 	</body>
