@@ -59,6 +59,11 @@ main {
 	height: 100%;
 }
 
+#stock-graph {
+	background-color: black;
+	color: white;
+}
+
 [id^="yahoo-"] {
 	background-color: var(--yahoo-purple);
 }
