@@ -66,16 +66,26 @@ main {
 		height: 100%;
 	}
 
-[id^="yahoo-"] {
-	background-color: var(--yahoo-purple);
-}
-
-#reddit-content {
+#reddit {
+	display: flex;
+	flex-direction: column;
 	overflow: scroll;
 	overflow-x: hidden;
-	max-width: 100%;
+	max-height: 100%;
 }
 
 .posts {
-	background-color: black;
+	background-color: transparent;
+	border: none;
+	transition: .35s;
 }
+	.posts:hover {
+		background-color: #f11541;
+		cursor: pointer;
+	}
+
+	.posts .username {
+		max-width: 5em;
+		overflow: hidden;
+		background-color: #00a05d;
+	}
