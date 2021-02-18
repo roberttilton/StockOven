@@ -1,5 +1,5 @@
 // declared variable linking to the Reddit div in the HTML
-var redditContent = document.getElementById('reddit-content');
+var redditContent = document.getElementById('reddit');
 // fetching the data from reddit
 fetch('https://www.reddit.com/r/wallstreetbets/hot.json', {
 })
@@ -9,6 +9,10 @@ fetch('https://www.reddit.com/r/wallstreetbets/hot.json', {
 	// function that parses the returned array and applies it where necessary
 	.then(
 		function (data) {
+			var redditDD = [];
+			var redditGain = [];
+			var redditLoss = [];
+			var redditNews = [];
 			console.log(redditContent);
 			console.log(data.data.children[0]);
 			for (var i = 0; i < data.data.children.length; i++) {
