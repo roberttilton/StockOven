@@ -13,22 +13,27 @@ fetch('https://www.reddit.com/r/wallstreetbets/hot.json', {
 			console.log(data.data.children[0]);
 			for (var i = 0; i < data.data.children.length; i++) {
 				if ((data.data.children[i].data.score) > 500) {
+					var redditRedirect = document.createElement('button');
 					// post titles parsing
 					var redditPosts = document.createElement('h3');
 					redditPosts.textContent = data.data.children[i].data.title;
 					// username parsing
-					var redditUsers = document.createElement('h3');
+					var redditUsers = document.createElement('span');
 					redditUsers.textContent = data.data.children[i].data.author;
 					// upvote/score parsing
-					var redditScore = document.createElement('h3');
+					var redditScore = document.createElement('span');
 					redditScore.textContent = data.data.children[i].data.score;
 					// url parsing, at the moment not utilized
-					var redditURL = document.createElement('h3');
-					redditURL.textContent = data.data.children[i].data.url;
+					const link = data.data.children[i].data.permalink;
 					// adding the results to the page
-					redditContent.appendChild(redditPosts);
-					redditContent.appendChild(redditUsers);
-					redditContent.appendChild(redditScore);
+					redditRedirect.appendChild(redditPosts);
+					redditRedirect.appendChild(redditUsers);
+					redditRedirect.appendChild(redditScore);
+					redditRedirect.addEventListener("click", function() {
+						window.location.href = `https://www.reddit.com${link}`;
+						console.log(link);
+					})
+					redditContent.appendChild(redditRedirect);
 				}
 			}
 		}
