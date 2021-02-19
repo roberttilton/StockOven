@@ -5,57 +5,78 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<meta name="Description" content="Enter your description here" />
+
+		<link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
 
 		<!-- External CSS -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.2/css/bulma.min.css" integrity="sha512-byErQdWdTqREz6DLAA9pCnLbdoGGhXfU6gm1c8bkf7F51JVmUBlayGe2A31VpXWQP+eiJ3ilTAZHCR3vmMyybA==" crossorigin="anonymous" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" />
+		<link rel="stylesheet" href="assets/css/normalize.css">
 
 		<!-- Internal CSS -->
 		<link rel="stylesheet" href="assets/css/style.css">
+
+		<!-- External JavaScript -->
+		<script src="assets/js/apexcharts.js"></script>
+
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 
 		<title>StockOven</title>
 	</head>
 
 	<body>
-
 		<nav class="notification is-primary">
-			<h1>StockOven</h1>
+			<div class="left-side">
+				<img id="logo" src="assets/images/logo.png" alt="logo">
+				<h1>StockOven</h1>
+			</div>
 
 			<div class="search-widget">
 				<i class="fas fa-search"></i>
-				<input type="text" name="search" id="search" placeholder="Search stocks:">
+				<input type="text" name="search" id="search"style="width: 250px; height: 33px;font: size 12px;pt;"  placeholder="Search stocks:">
+				<button id="button" type="button">Search</button>
+				
 			</div>
 		</nav>
 
 		<main class="tile is-ancestor">
 			<div class="tile is-parent is-7">
 				<div class="tile notification is-danger" id="reddit-container">
-					<button class= "sort-button" id= "reddit-dd" type="button">DD</button>
-					<button class= "sort-button" id= "reddit-gain" type="button">Gain</button>
-					<button class= "sort-button" id= "reddit-loss" type="button">Loss</button>
-					<button class= "sort-button" id= "reddit-news" type="button">News</button>
-					<button class= "sort-button" id= "reddit-yolo" type="button">YOLO</button>
+					<div class="sort-buttons">
+						<button class="sort-button" id="reddit-dd" type="button" style="background-color: #273ebd;">DD</button>
+						<button class="sort-button" id="reddit-gain" type="button" style="background-color: green;">Gain</button>
+						<button class="sort-button" id="reddit-loss" type="button" style="background-color: crimson;">Loss</button>
+						<button class="sort-button" id="reddit-news" type="button" style="background-color: goldenrod;">News</button>
+						<button class="sort-button" id="reddit-yolo" type="button" style="background-color: cadetblue;">YOLO</button>
+						<button class="sort-button" id="reddit-discussion" type="button" style="background-color: cadetblue;">Discussion</button>
+					</div>
 					<div id="reddit">
+						<div class="no-reddit tooltip"></div>
 					</div>
 				</div>
 			</div>
 
-			<div class="tile">
+			<div class="tile content">
 				<div class="tile is-parent is-vertical">
 					<div id="stock-graph" class="tile is-child notification is-light"></div>
-					<div id="top-movers" class="tile is-child notification is-info">Top Movers of the Week</div>
+					<div id="top-movers" class="tile is-child notification is-info">Top Movers of the Week
+						<div>NVDA</div>
+						<div>TSLA</div>
+						<div>AMZN</div>
+						<div>GME</div>
+						<div>AMD</div>
+					</div>
 				</div>
 			</div>
 		</main>
 
-		<!-- External JavaScript -->
-		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script> -->
-		<script src="assets/js/apexcharts.js"></script>
+		<div class="contributors">Robert Tilton, Isiah Feeley, Navid Ebrahimi, Krushil Naik</div>
 
 		<!-- Internal JavaScript -->
 		<script src="assets/js/isiah.js"></script>
-		<!-- <script src="assets/js/krushil.js"></script> -->
 		<script src="assets/js/navid.js"></script>
 		<script src="assets/js/robert.js"></script>
 	</body>
