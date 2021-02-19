@@ -6,6 +6,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+		<title>StockOven</title>
+
 		<link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
 
 		<!-- External CSS -->
@@ -17,14 +19,6 @@
 		<!-- Internal CSS -->
 		<link rel="stylesheet" href="assets/css/style.css">
 
-		<!-- External JavaScript -->
-		<script src="assets/js/apexcharts.js"></script>
-
-		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-
-		<title>StockOven</title>
 	</head>
 
 	<body>
@@ -46,7 +40,7 @@
 			<div class="tile is-parent is-7">
 				<div class="tile notification is-danger" id="reddit-container">
 					<div class="sort-buttons">
-						<button class="sort-button" id="reddit-dd" type="button" style="background-color: #273ebd;">DD</button>
+						<button class="sort-button" id="reddit-dd" type="button" style="background-color: #365b8c;">DD</button>
 						<button class="sort-button" id="reddit-gain" type="button" style="background-color: green;">Gain</button>
 						<button class="sort-button" id="reddit-loss" type="button" style="background-color: crimson;">Loss</button>
 						<button class="sort-button" id="reddit-news" type="button" style="background-color: goldenrod;">News</button>
@@ -60,19 +54,62 @@
 
 			<div class="tile content">
 				<div class="tile is-parent is-vertical">
-					<div id="stock-graph" class="tile is-child notification is-light"></div>
-					<div id="top-movers" class="tile is-child notification is-info">Top Movers of the Week
-						<div>NVDA</div>
-						<div>TSLA</div>
-						<div>AMZN</div>
-						<div>GME</div>
-						<div>AMD</div>
+					<div id="stock-graph-container" class="tile is-child notification is-light">
+						<div id="stock-graph"></div>
+						<div id="graph-controls">
+							<div id="ranges">
+								<input type="radio" name="range" id="1d">
+								<label for="1d">1d</label>
+
+								<input type="radio" name="range" id="5d" checked>
+								<label for="1d">5d</label>
+								<!-- <button id="1d">1d</button>
+								<button id="5d">5d</button> -->
+							</div>
+							<div id="intervals">
+								<!-- <label for="1m">1m</label>
+								<input type="radio" name="interval" id="1m"> -->
+
+								<input type="radio" name="interval" id="5m">
+								<label for="5m">5m</label>
+
+								<input type="radio" name="interval" id="15m">
+								<label for="15m">15m</label>
+
+								<input type="radio" name="interval" id="60m" checked>
+								<label for="60m">60m</label>
+
+								<input type="radio" name="interval" id="1d">
+								<label for="1d">1d</label>
+
+								<label for="placeholder"></label>
+								<!-- <button id="1m">1m</button>
+								<button id="5m">5m</button>
+								<button id="15m">15m</button>
+								<button id="60m">60m</button>
+								<button id="1d">1d</button> -->
+							</div>
+						</div>
+					</div>
+					<div id="top-movers-containers" class="tile is-child notification is-info is-3">Most active this Week:
+						<div id="top-movers">
+						<a class="mover-link">NVDA</a>
+						<a class="mover-link">TSLA</a>
+						<a class="mover-link">AMZN</a>
+						<a class="mover-link">GME</a>
+						<a class="mover-link">AMD</a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</main>
 
 		<div class="contributors">Robert Tilton, Isiah Feeley, Navid Ebrahimi, Krushil Naik</div>
+
+		<!-- External JavaScript -->
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="assets/js/apexcharts.js"></script>
 
 		<!-- Internal JavaScript -->
 		<script src="assets/js/isiah.js"></script>
