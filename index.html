@@ -53,43 +53,52 @@
 				</div>
 			</div>
 
+			<div id="ranges">
+				<input type="radio" name="range" id="r-1d">
+				<input type="radio" name="range" id="r-5d" checked>
+			</div>
+
+			<div id="intervals">
+				<input type="radio" name="interval" id="i-5m">
+				<input type="radio" name="interval" id="i-15m">
+				<input type="radio" name="interval" id="i-60m" checked>
+				<input type="radio" name="interval" id="i-1d">
+			</div>
+
 			<div class="tile content">
 				<div class="tile is-parent is-vertical">
-					<div id="stock-graph-container" class="tile is-child notification is-light">
+					<div id="stock-graph-container" class="tile notification is-light">
 						<div id="stock-graph"></div>
 						<div id="graph-controls">
-							<div id="ranges">
-								<input type="radio" name="range" id="1d">
-								<label for="1d">1d</label>
 
-								<input type="radio" name="range" id="5d" checked>
-								<label for="1d">5d</label>
+							<div id="range-labels">
+								<div id="range-ui"></div>
+								<div class="modes">
+									<label for="r-1d">1d</label>
+									<label for="r-5d">5d</label>
+								</div>
 							</div>
-							<div id="intervals">
 
-								<input type="radio" name="interval" id="5m">
-								<label for="5m">5m</label>
-
-								<input type="radio" name="interval" id="15m">
-								<label for="15m">15m</label>
-
-								<input type="radio" name="interval" id="60m" checked>
-								<label for="60m">60m</label>
-
-								<input type="radio" name="interval" id="1d">
-								<label for="1d">1d</label>
-
-								<label for="placeholder"></label>
+							<div id="interval-labels">
+								<div id="interval-ui"></div>
+								<div class="modes">
+									<label for="i-5m">5m</label>
+									<label for="i-15m">15m</label>
+									<label for="i-60m">60m</label>
+									<label for="i-1d">1d</label>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div id="top-movers-containers" class="tile is-child notification is-info is-3">Most active this Week:
+
+					<div id="top-movers-container" class="tile notification is-info">
+						Most active this Week:
 						<div id="top-movers">
-						<a class="mover-link">NVDA</a>
-						<a class="mover-link">TSLA</a>
-						<a class="mover-link">AMZN</a>
-						<a class="mover-link">GME</a>
-						<a class="mover-link">AMD</a>
+							<a class="mover-link">NVDA</a>
+							<a class="mover-link">TSLA</a>
+							<a class="mover-link">AMZN</a>
+							<a class="mover-link">GME</a>
+							<a class="mover-link">AMD</a>
 						</div>
 					</div>
 				</div>
@@ -104,6 +113,7 @@
 		<script src="assets/js/apexcharts.js"></script>
 
 		<!-- Internal JavaScript -->
+		<script src="assets/js/krushil.js"></script>
 		<script src="assets/js/isiah.js"></script>
 		<script src="assets/js/navid.js"></script>
 		<script src="assets/js/robert.js"></script>

@@ -59,34 +59,90 @@ main {
 
 #stock-graph-container {
 	display: grid !important;
-	grid-template-rows: auto 2em;
+	grid-template-rows: auto 2.2em;
 	row-gap: .5em;
 }
 
-#stock-graph {
+#stock-graph-container {
 	background-color: #424242;
 }
 
+label {
+	color: white;
+}
+
 #graph-controls {
-	display: flex;
-	flex-direction: row;
+	height: 100%;
+	/* background-color: #292828; */
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 1%;
 	justify-content: space-between;
-	height: min-content;
 }
 
-#graph-controls div {
-	height: min-content;
+#ranges, #intervals {
+	display: none;
 }
 
-#ranges::before {
-	content: "Graph Range: ";
+.modes {
+	position: relative;
+	display: grid;
+	text-align: center;
+	align-items: center;
+	height: 100%;
+	border-radius: 20px;
+	z-index: 3;
 }
 
-#intervals::before {
-	content: "Graph Step: ";
+#interval-ui {
+	background-color: #d84e4e;
+	height: 100%;
+	width: 25%;
+	border-radius: 20px;
+	transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	z-index: 2;
+	left: 50%;
+	position: absolute;
 }
 
-#top-movers-containers {
+#range-ui {
+	transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	background-color: #d84e4e;
+	height: 100%;
+	width: 50%;
+	border-radius: 20px;
+	z-index: 2;
+	position: absolute;
+	left: 50%;
+}
+
+#range-labels {
+	background-color: #00a05d;
+	width: 50%;
+	border-radius: 20px;
+	justify-self: left;
+	position: relative;
+	box-shadow: 0 0 10px #969696;
+}
+
+#interval-labels {
+	background-color: #00a05d;
+	width: 90%;
+	border-radius: 20px;
+	justify-self: right;
+	position: relative;
+	box-shadow: 0 0 10px #969696;
+}
+
+#range-labels .modes {
+	grid-template-columns: repeat(2, 1fr);
+}
+
+#interval-labels .modes {
+	grid-template-columns: repeat(4, 1fr);
+}
+
+#top-movers-container {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
