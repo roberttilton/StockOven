@@ -40,7 +40,7 @@ function fetchStock(stockInput) {
 					height: 300,
 					type: 'candlestick'
 				},
-				title: {text: 'Stock Chart',align: 'left'},
+				title: {text: stockInput + ' Stock Chart',align: 'left'},
 				theme: {mode: "dark"},
 				xaxis: {type: 'datetime'}
 			};
