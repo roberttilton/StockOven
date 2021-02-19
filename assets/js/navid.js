@@ -1,8 +1,8 @@
 var candlePoints = [];
 
 var currentStock = "";
-var currentRange = "";
-var currentInterval = "";
+var currentRange = localStorage.getItem("range") || "r-5d";
+var currentInterval = localStorage.getItem("interval") || "i-60m";
 var stockInput = "";
 
 function renderGraph(range, interval) {
@@ -116,7 +116,7 @@ async function fetchStock(stockInput) {
 }
 
 // call the function
-fetchStock("GME").then( (_) => renderGraph("5d", "60m"));
+fetchStock("GME").then(_ => renderGraph(currentRange, currentInterval));
 
 // fetch a response for the top movers
 fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-movers?region=US&lang=en-US&start=0&count=5", {
