@@ -104,9 +104,10 @@ main {
 .search-widget {
 	display: flex;
 	flex-direction: row;
-	height: 2em;
+	height: 2.05em;
 	font-size: inherit;
 }
+
 	.search-widget i {
 		font-size: inherit;
 		text-align: center;
@@ -118,8 +119,13 @@ main {
 		height: 1.5em;
 		line-height: 1.5em;
 		background-color: #e2e2e2;
-		color: #794141;
+		color: #292828;
 		height: 100%;
+	}
+
+	.search-widget i:hover {
+		background-color: #d4cbcb;
+	
 	}
 
 

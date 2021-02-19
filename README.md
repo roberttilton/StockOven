@@ -20,4 +20,44 @@ Styles Used
 - Bulma
 - Javascript
 - JQuery
-- 
+
+
+API's Used
+- https://www.reddit.com/r/wallstreetbets/top.json'
+
+- https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=5m&symbol=
+
+
+Creator Contributions
+- Krushil Naik
+    - Front-end development
+    - Code refactoring
+
+- Robert Tilton
+    - Parse Wallsreetbets subreddit
+    - Add flare buttons to categorize Reddit posts
+
+- Navi Ebrahimi
+    - Fetch Yahoo Finance API
+    - Display chart data to page
+
+- Isiah Feeley
+    - Develop auto-filling search bar 
+    - Attach search bar to search within Yahoo Finance API
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
