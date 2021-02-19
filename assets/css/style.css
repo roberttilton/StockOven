@@ -200,3 +200,25 @@ body::-webkit-scrollbar {
 	background: #ff735a;
 	border-radius: 10px;
 }
+
+.sort-buttons {
+	margin-bottom: 10px;
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+}
+
+.sort-button {
+	display: inline;
+	color: white;
+	font-size: 18px;
+	padding: .5% 1.5%;
+	border-radius: 12px;
+	border: solid 2px rgb(49, 49, 49);
+	transition: .3s;
+	/* box-shadow: 0 0 3px rgb(49, 49, 49); */
+}
+	.sort-button:hover {
+		filter: brightness(1.15);
+		cursor: pointer;
+	}
