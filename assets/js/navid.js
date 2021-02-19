@@ -1,52 +1,78 @@
-const RAPID_API_KEY = "49c262adb7msh32c74269c34335fp14ab31jsn4366026eeabe";
-
-function fetchStock(userStock) {
-	/**
-	 * Display loader here
-	 */
-
-	// Preform the fetch
-	fetch(`https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=5m&symbol=${userStock}&range=1d&region=US`, {
-		"method": "GET",
-		"headers": {
-			"x-rapidapi-key": RAPID_API_KEY,
-			"x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
-		}
-	}).then(response => response.json())
+function fetchStock(stockInput) {
+	// fetch the stock chart data from the yahoo finance api
+	fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=5m&symbol=" + stockInput + "&range=1d&region=US", {
+			"method": "GET",
+			"headers": {
+				"x-rapidapi-key": "49c262adb7msh32c74269c34335fp14ab31jsn4366026eeabe",
+				"x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
+			}
+		})
+		// convert the response into json
+		.then(response => response.json())
 		.then(data => {
 			var candlePoints = [];
-
+				// Create a for-loop to grab the values from the response array
 			for (let i = 0; i < data.chart.result[0].timestamp.length; i += 5) {
+				// Grab the timestamps from the response's array & multiply by 1000 since in unix
 				const timestamp = new Date(data.chart.result[0].timestamp[i] * 1000);
 
-				const close = data.chart.result[0].indicators.quote[0].close[i].toFixed(2);
-				const high = data.chart.result[0].indicators.quote[0].high[i].toFixed(2);
-				const low = data.chart.result[0].indicators.quote[0].low[i].toFixed(2);
-				const open = data.chart.result[0].indicators.quote[0].open[i].toFixed(2);
-
+				const close = data.chart.result[0].indicators.quote[0].close[i];
+				const high = data.chart.result[0].indicators.quote[0].high[i];
+				const low = data.chart.result[0].indicators.quote[0].low[i];
+				const open = data.chart.result[0].indicators.quote[0].open[i];
+				// set the x and y axis of our graph
 				candlePoints.push({
 					x: timestamp,
 					y: [open, high, low, close]
 				});
 			}
 
-			const containerHeight = document.querySelector("#stock-graph").clientHeight;
-
+			console.log(candlePoints);
+			// create an object for the properties of our graph. Based off ApexCharts rubric.
 			var options = {
-				series: [{name: "candle", type: "candlestick", data: candlePoints}],
-				chart: {height: containerHeight, type: 'candlestick'},
-				title: {text: `${userStock} Stock Chart`},
+				series: [{
+					name: "candle",
+					type: "candlestick",
+					data: candlePoints
+				}],
+				chart: {
+					height: 300,
+					type: 'candlestick'
+				},
+				title: {text: 'Stock Chart',align: 'left'},
+				theme: {mode: "dark"},
 				xaxis: {type: 'datetime'}
 			};
 
 			var chart = new ApexCharts(document.querySelector("#stock-graph"), options);
 			chart.render();
-
-			var triggers = document.querySelector(".resize-triggers");
-			triggers.parentNode.removeChild(triggers);
-			console.log("attempted to remove triggers");
-		})
-	;
+		});
 }
 
-// fetchStock("AMZN");
+// call the function
+fetchStock("GME");
+
+// fetch a response for the top movers
+fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-movers?region=US&lang=en-US&start=0&count=5", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "49c262adb7msh32c74269c34335fp14ab31jsn4366026eeabe",
+		"x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
+	}
+})
+	// convert the response into json
+.then(response => response.json()).then(data => {
+	console.log(data);
+	var movers = [];
+	// create a for loop to grab from the top movers array
+	for (let i =0; i<data.finance.result[2].quotes.length; i++){
+		const stockName = data.finance.result[2].quotes[i].symbol;
+		
+		var stockElement = document.createElement("div");
+		stockElement.innerText = stockName ;
+		document.querySelector("#top-movers").appendChild(stockElement);
+	}
+})
+.catch(err => {
+	console.error(err);
+});
