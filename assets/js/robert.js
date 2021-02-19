@@ -5,12 +5,14 @@ var redditGain = [];
 var redditLoss = [];
 var redditNews = [];
 var redditYolo = [];
+var redditDiscussion = [];
 var postObject = {
 	"DD": redditDD,
 	"Gain": redditGain,
 	"Loss": redditLoss,
 	"News": redditNews,
-	"YOLO": redditYolo
+	"YOLO": redditYolo,
+	"Discussion": redditDiscussion
 };
 
 function renderReddit(flair) {
