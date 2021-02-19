@@ -2,17 +2,19 @@ function fetchStock(stockInput) {
 	// fetch the stock chart data from the yahoo finance api
 	const backup = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=5m&symbol=" + stockInput + "&range=1d&region=US";
 	fetch("sample_responses/sample_yahoo_response.json", {
-			"method": "GET",
-			"headers": {
-				"x-rapidapi-key": "49c262adb7msh32c74269c34335fp14ab31jsn4366026eeabe",
-				"x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
-			}
-		})
+		"method": "GET",
+		"headers": {
+			"x-rapidapi-key": "49c262adb7msh32c74269c34335fp14ab31jsn4366026eeabe",
+			"x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
+		}
+	})
+
 		// convert the response into json
 		.then(response => response.json())
 		.then(data => {
 			var candlePoints = [];
-				// Create a for-loop to grab the values from the response array
+
+			// Create a for-loop to grab the values from the response array
 			for (let i = 0; i < data.chart.result[0].timestamp.length; i += 5) {
 				// Grab the timestamps from the response's array & multiply by 1000 since in unix
 				const timestamp = new Date(data.chart.result[0].timestamp[i] * 1000);
@@ -21,6 +23,7 @@ function fetchStock(stockInput) {
 				const high = data.chart.result[0].indicators.quote[0].high[i];
 				const low = data.chart.result[0].indicators.quote[0].low[i];
 				const open = data.chart.result[0].indicators.quote[0].open[i];
+
 				// set the x and y axis of our graph
 				candlePoints.push({
 					x: timestamp,
@@ -29,6 +32,7 @@ function fetchStock(stockInput) {
 			}
 
 			console.log(candlePoints);
+
 			// create an object for the properties of our graph. Based off ApexCharts rubric.
 			var options = {
 				series: [{
