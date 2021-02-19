@@ -6,13 +6,15 @@ var redditLoss = [];
 var redditNews = [];
 var redditYolo = [];
 var redditDiscussion = [];
+var redditChart = [];
 var postObject = {
 	"DD": redditDD,
 	"Gain": redditGain,
 	"Loss": redditLoss,
 	"News": redditNews,
 	"YOLO": redditYolo,
-	"Discussion": redditDiscussion
+	"Discussion": redditDiscussion,
+	"Chart": redditChart
 };
 
 function renderReddit(flair) {
@@ -34,7 +36,7 @@ function renderReddit(flair) {
 }
 
 // fetching the data from reddit
-fetch('https://www.reddit.com/r/wallstreetbets.json', {
+fetch('https://www.reddit.com/r/wallstreetbets/new.json', {
 })
 	.then(function (response) {
 		return response.json();
