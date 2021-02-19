@@ -118,22 +118,6 @@ async function fetchStock(stockInput) {
 // call the function
 fetchStock("GME").then( (_) => renderGraph("5d", "60m"));
 
-document.querySelectorAll(`#intervals > input[type="radio"]`).forEach(
-	button => {
-		button.addEventListener("click", function(event) {
-			renderGraph(currentRange, event.currentTarget.id);
-		});
-	}
-);
-
-document.querySelectorAll(`#ranges > input[type="radio"]`).forEach(
-	button => {
-		button.addEventListener("click", function(event) {
-			renderGraph(event.currentTarget.id, currentInterval);
-		});
-	}
-);
-
 // fetch a response for the top movers
 fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-movers?region=US&lang=en-US&start=0&count=5", {
 	"method": "GET",
