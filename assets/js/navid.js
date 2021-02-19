@@ -81,7 +81,7 @@ async function fetchStock(stockInput) {
 	currentStock = stockInput;
 	// fetch the stock chart data from the yahoo finance api
 	// const backup = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=1m&symbol=" + stockInput + "&range=5d&region=US";
-	await fetch("sample_responses/sampleResponse.json", {
+	await fetch("sample_responses/sample_yahoo_chart_response.json", {
 		"method": "GET",
 		"headers": {
 			"x-rapidapi-key": "044818423amsh7a4b9ddcb86f6bdp1a1b13jsn21dfddc15cb3",
