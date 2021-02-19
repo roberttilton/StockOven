@@ -3,7 +3,7 @@
 fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=5m&symbol=AMRN&range=1d&region=US", {
 	"method": "GET",
 	"headers": {
-		"x-rapidapi-key": "044818423amsh7a4b9ddcb86f6bdp1a1b13jsn21dfddc15cb3",
+		"x-rapidapi-key": "044818423amsh7a4b9ddcb86f6bdp1a1b13jsn21dfddc15cb3",   //Grabs the Yahoo finance API
 		"x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
 	}
 })
@@ -18,7 +18,7 @@ fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interv
 
 
 $(function() {
-	var stockNames = [
+	var stockNames = [           //Variable created for all US stock names
 		"AACG",
 		"AACQ",
 		"AACQU",
@@ -3760,16 +3760,16 @@ $(function() {
 		"ZYXI",
 	];
   
-	$('#search').hide(0).show(15);
+	$('#search').hide(0).show(15);       //Created search bar and autofills as user types in stock names
 	$("#search").autocomplete({
 	  source: stockNames
 	});
   });
 
 
- var searchButton = document.querySelector("#button");
+ var searchButton = document.querySelector("#button");   //Variable to create search button
 
- searchButton.addEventListener("click", function(event) {
+ searchButton.addEventListener("click", function(event) {   //Function for when the search button is clicked, the program reads the stock chosen and displays the corresponding stock chart grabbed from yahoo finance api
 	event.preventDefault();
 	var stockSearch = document.querySelector("#search").value;
 	console.log(stockSearch)
