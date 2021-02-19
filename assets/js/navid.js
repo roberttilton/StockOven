@@ -1,7 +1,80 @@
-function fetchStock(stockInput) {
+var candlePoints = [];
+
+var currentStock = "";
+var currentRange = "";
+var currentInterval = "";
+var stockInput = "";
+
+function renderGraph(range, interval) {
+	console.log(`Called renderGraph(range=${range}, interval=${interval})`);
+
+	currentRange = range;
+	currentInterval = interval;
+
+	document.querySelector("#stock-graph").innerHTML = "";
+
+	/**
+	 * 5 minutes: i++;
+	 * 15 minutes: i += 3;
+	 * 60 minutes: - += 12;
+	 * 1 day : i += 288;
+	 */
+	const incrementTable  = {
+		"5m" : 1,
+		"15m" : 3,
+		"60m" : 12,
+		"1d" : 288
+	};
+
+	let filteredData = [];
+
+	for (let i = 0; i < candlePoints.length; i += incrementTable[interval]) {
+		const point = candlePoints[i];
+
+		if (range === "1d" && i >= 186) {
+			console.log("Short circuiting after one day");
+			break;
+		}
+
+		filteredData.push(point);
+	}
+
+	console.log(`Rendering ${filteredData.length} points`);
+
+	// create an object for the properties of our graph. Based off ApexCharts rubric.
+	var options = {
+		series: [{
+			name: "candle",
+			type: "candlestick",
+			data: filteredData
+		}],
+		chart: {
+			// height: 300,
+			type: 'candlestick'
+		},
+		title: {text: currentStock + ' Stock Chart', align: 'left'},
+		theme: {mode: "dark"},
+		xaxis: {type: 'datetime'},
+		yaxis: {tickAmount: 10}
+	};
+
+	var chart = new ApexCharts(document.querySelector("#stock-graph"), options);
+	chart.render();
+
+	try {
+		var triggers = document.querySelector(".resize-triggers");
+		triggers.parentElement.removeChild(triggers);
+	} catch (error) {
+		return;
+	}
+}
+
+
+async function fetchStock(stockInput) {
+	currentStock = stockInput;
 	// fetch the stock chart data from the yahoo finance api
-	const backup = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=5m&symbol=" + stockInput + "&range=1d&region=US";
-	fetch("sample_responses/sample_yahoo_response.json", {
+	// const backup = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=1m&symbol=" + stockInput + "&range=5d&region=US";
+	await fetch("sample_responses/sampleResponse.json", {
 		"method": "GET",
 		"headers": {
 			"x-rapidapi-key": "49c262adb7msh32c74269c34335fp14ab31jsn4366026eeabe",
@@ -12,53 +85,51 @@ function fetchStock(stockInput) {
 		// convert the response into json
 		.then(response => response.json())
 		.then(data => {
-			var candlePoints = [];
 
 			// Create a for-loop to grab the values from the response array
 			for (let i = 0; i < data.chart.result[0].timestamp.length; i += 5) {
 				// Grab the timestamps from the response's array & multiply by 1000 since in unix
 				const timestamp = new Date(data.chart.result[0].timestamp[i] * 1000);
 
-				const close = data.chart.result[0].indicators.quote[0].close[i];
-				const high = data.chart.result[0].indicators.quote[0].high[i];
-				const low = data.chart.result[0].indicators.quote[0].low[i];
-				const open = data.chart.result[0].indicators.quote[0].open[i];
 
-				// set the x and y axis of our graph
-				candlePoints.push({
-					x: timestamp,
-					y: [open, high, low, close]
-				});
+				try {
+					const close = data.chart.result[0].indicators.quote[0].close[i].toFixed(2);
+					const high = data.chart.result[0].indicators.quote[0].high[i].toFixed(2);
+					const low = data.chart.result[0].indicators.quote[0].low[i].toFixed(2);
+					const open = data.chart.result[0].indicators.quote[0].open[i].toFixed(2);
+
+					// set the x and y axis of our graph
+					candlePoints.push({
+						x: timestamp,
+						y: [open, high, low, close]
+					});
+				} catch (error) {
+					continue;
+				}
 			}
 
-			console.log(candlePoints);
-
-			// create an object for the properties of our graph. Based off ApexCharts rubric.
-			var options = {
-				series: [{
-					name: "candle",
-					type: "candlestick",
-					data: candlePoints
-				}],
-				chart: {
-					height: 300,
-					type: 'candlestick'
-				},
-				title: {text: stockInput + ' Stock Chart',align: 'left'},
-				theme: {mode: "dark"},
-				xaxis: {type: 'datetime'}
-			};
-
-			var chart = new ApexCharts(document.querySelector("#stock-graph"), options);
-			chart.render();
-
-			var triggers = document.querySelector(".resize-triggers");
-			triggers.parentElement.removeChild(triggers);
+			console.log(`Successfully fetched ${candlePoints.length} data points.`);
 		});
 }
 
 // call the function
-// fetchStock("GME");
+fetchStock("GME").then( (_) => renderGraph("5d", "60m"));
+
+document.querySelectorAll(`#intervals > input[type="radio"]`).forEach(
+	button => {
+		button.addEventListener("click", function(event) {
+			renderGraph(currentRange, event.currentTarget.id);
+		});
+	}
+);
+
+document.querySelectorAll(`#ranges > input[type="radio"]`).forEach(
+	button => {
+		button.addEventListener("click", function(event) {
+			renderGraph(event.currentTarget.id, currentInterval);
+		});
+	}
+);
 
 // fetch a response for the top movers
 // fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-movers?region=US&lang=en-US&start=0&count=5", {

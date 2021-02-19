@@ -54,8 +54,44 @@
 
 			<div class="tile content">
 				<div class="tile is-parent is-vertical">
-					<div id="stock-graph" class="tile is-child notification is-light"></div>
-					<div id="top-movers" class="tile is-child notification is-info">Top Movers of the Week
+					<div id="stock-graph-container" class="tile is-child notification is-light">
+						<div id="stock-graph"></div>
+						<div id="graph-controls">
+							<div id="ranges">
+								<input type="radio" name="range" id="1d">
+								<label for="1d">1d</label>
+
+								<input type="radio" name="range" id="5d" checked>
+								<label for="1d">5d</label>
+								<!-- <button id="1d">1d</button>
+								<button id="5d">5d</button> -->
+							</div>
+							<div id="intervals">
+								<!-- <label for="1m">1m</label>
+								<input type="radio" name="interval" id="1m"> -->
+
+								<input type="radio" name="interval" id="5m">
+								<label for="5m">5m</label>
+
+								<input type="radio" name="interval" id="15m">
+								<label for="15m">15m</label>
+
+								<input type="radio" name="interval" id="60m" checked>
+								<label for="60m">60m</label>
+
+								<input type="radio" name="interval" id="1d">
+								<label for="1d">1d</label>
+
+								<label for="placeholder"></label>
+								<!-- <button id="1m">1m</button>
+								<button id="5m">5m</button>
+								<button id="15m">15m</button>
+								<button id="60m">60m</button>
+								<button id="1d">1d</button> -->
+							</div>
+						</div>
+					</div>
+					<div id="top-movers" class="tile is-child notification is-info is-3">Top Movers of the Week
 						<div>NVDA</div>
 						<div>TSLA</div>
 						<div>AMZN</div>

@@ -53,8 +53,34 @@ main {
 	height: 100%;
 }
 
+/* Stock graph stuff */
+
+#stock-graph-container {
+	display: grid !important;
+	grid-template-rows: auto 2em;
+	row-gap: .5em;
+}
+
 #stock-graph {
 	background-color: #424242;
+}
+
+#graph-controls {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	height: min-content;
+}
+	#graph-controls div {
+		height: min-content;
+	}
+
+#ranges::before {
+	content: "Graph Range: ";
+}
+
+#intervals::before {
+	content: "Graph Step: ";
 }
 
 #top-movers {
@@ -63,6 +89,7 @@ main {
 	text-align: center;
 	font-weight: 600;
 	align-content: space-around;
+	width: 100%;
 }
 
 /* Search bar */
