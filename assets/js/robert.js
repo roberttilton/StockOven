@@ -15,6 +15,17 @@ var postObject = {
 
 function renderReddit(flair) {
 	redditContent.innerHTML = "";
+
+	if (postObject[flair].length === 0) {
+		console.log("No posts found");
+
+		var deadFlair = $(`<div class="no-reddit">`).get()[0];
+		deadFlair.setAttribute("data-dead-flair", `No posts found for flair '${flair}'`)
+
+		redditContent.appendChild(deadFlair);
+		return;
+	}
+
 	for (const post of postObject[flair]) {
 		redditContent.appendChild(post);
 	}

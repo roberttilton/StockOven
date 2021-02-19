@@ -118,6 +118,33 @@ main {
 	color: white;
 }
 
+.no-reddit {
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+	justify-self: center;
+	margin: auto;
+	color: #cfcfcf;
+}
+	.no-reddit::before {
+		content: "";
+		background-image: url(https://cdn3.iconfinder.com/data/icons/social-media-black-white-2/512/BW_Reddit_glyph_svg-512.png);
+		background-size: 100px;
+		background-repeat: no-repeat;
+		width: 100px;
+		height: 100px;
+		margin-left: auto;
+		margin-right: auto;
+		filter: invert(0.75);
+	}
+	.no-reddit.tooltip::after {
+		content: "Click a flair up top to see trending posts";
+	}
+	.no-reddit::after {
+		content: attr(data-dead-flair);
+	}
+
+
 .reddit-post {
 	color: inherit;
 	position: relative;
