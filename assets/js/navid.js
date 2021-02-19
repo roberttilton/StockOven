@@ -47,11 +47,14 @@ function fetchStock(stockInput) {
 
 			var chart = new ApexCharts(document.querySelector("#stock-graph"), options);
 			chart.render();
+
+			var triggers = document.querySelector(".resize-triggers");
+			triggers.parentElement.removeChild(triggers);
 		});
 }
 
 // call the function
-fetchStock("GME");
+// fetchStock("GME");
 
 // fetch a response for the top movers
 // fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-movers?region=US&lang=en-US&start=0&count=5", {
