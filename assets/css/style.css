@@ -139,10 +139,11 @@ main {
 		filter: invert(0.75);
 	}
 	.no-reddit.tooltip::after {
-		content: "Click a flair up top to see trending posts";
+		content: "Click a flair up top to see their trending posts";
 	}
 	.no-reddit::after {
 		content: attr(data-dead-flair);
+		margin-top: 5%;
 	}
 
 
@@ -210,7 +211,7 @@ main {
 	transform: translate(0, -50%);
 }
 
-sort-buttons {
+.sort-buttons {
 	margin-bottom: 10px;
 	display: flex;
 	flex-direction: row;
@@ -222,7 +223,7 @@ sort-buttons {
 	color: white;
 	font-size: 18px;
 	padding: .5% 1.5%;
-	border-radius: 12px;
+	border-radius: 15px;
 	border: solid 2px rgb(49, 49, 49);
 	transition: .3s;
 	/* box-shadow: 0 0 3px rgb(49, 49, 49); */
