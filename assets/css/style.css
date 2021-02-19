@@ -125,7 +125,7 @@ main {
 	align-self: center;
 	justify-self: center;
 	margin: auto;
-	color: #cfcfcf;
+	color: #dddddd;
 }
 	.no-reddit::before {
 		content: "";
@@ -204,12 +204,17 @@ main {
 
 .post-score {
 	color: inherit;
-	background-color: #eeae0d;
+	background-color: #ffffff1e;
+	color: honeydew;
+	padding: .3%;
 	position: absolute;
 	right: 1%;
 	top: 50%;
 	transform: translate(0, -50%);
 }
+	.post-score i {
+		color: #00bb6d;
+	}
 
 .sort-buttons {
 	margin-bottom: 10px;
@@ -243,6 +248,7 @@ main {
 	margin: .5%;
 	justify-self: center;
 	border-radius: 10px;
+	height: fit-content;
 }
 
 
