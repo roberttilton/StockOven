@@ -269,8 +269,20 @@ main {
 	.sort-button:hover {
 		filter: brightness(1.15);
 		cursor: pointer;
+		position: relative;
 	}
-
+		.sort-button:hover:before {
+			content: attr(data-tip);
+			text-align: center;
+			background-color: #42424288;
+			padding: 5%;
+			color: white;
+			position: absolute;
+			top: -60%;
+			width: max-content;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
 
 /* Footer */
 .contributors {
