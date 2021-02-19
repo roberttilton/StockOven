@@ -12,23 +12,24 @@ var postObject = {
 	"News": redditNews,
 	"YOLO": redditYolo
 };
+
 function renderReddit(flair) {
 	redditContent.innerHTML = "";
 	for (const post of postObject[flair]) {
 		redditContent.appendChild(post);
 	}
 }
+
 // fetching the data from reddit
-fetch('https://www.reddit.com/r/wallstreetbets/top.json', {
-})
+fetch('https://www.reddit.com/r/wallstreetbets/top.json', {})
 	.then(function (response) {
 		return response.json();
 	})
 	.then(
 		// function that parses the returned array and applies it where necessary
 		function (data) {
-			console.log(redditContent);
-			console.log(data.data.children[0]);
+			// console.log(redditContent);
+			// console.log(data.data.children[0]);
 			for (var i = 0; i < data.data.children.length; i++) {
 				var redditRedirect = document.createElement('button');
 				// post titles parsing
@@ -46,9 +47,10 @@ fetch('https://www.reddit.com/r/wallstreetbets/top.json', {
 				redditRedirect.appendChild(redditPosts);
 				redditRedirect.appendChild(redditUsers);
 				redditRedirect.appendChild(redditScore);
-				redditRedirect.addEventListener("click", function() {
-					window.location.href = `https://www.reddit.com${link}`;
-					console.log(link);
+				redditRedirect.addEventListener("click", function () {
+					// window.location.href = `https://www.reddit.com${link}`;
+					window.open(`https://www.reddit.com${link}`, "_blank");
+					// console.log(link);
 				});
 				redditRedirect.classList.add("reddit-post");
 				redditPosts.classList.add("post-title");
@@ -60,19 +62,19 @@ fetch('https://www.reddit.com/r/wallstreetbets/top.json', {
 				redditScore.appendChild(upvote);
 				redditScore.append(data.data.children[i].data.score);
 				var currentFlair = data.data.children[i].data.link_flair_text;
-				console.log(currentFlair);
+				// console.log(currentFlair);
 				if (Object.keys(postObject).includes(currentFlair)) {
 					postObject[currentFlair].push(redditRedirect);
 				}
 			}
-			console.log(redditNews);
+			// console.log(redditNews);
 		}
-	)
-	;
+	);
+
 document.querySelectorAll(".sort-button").forEach(button => {
-	button.addEventListener("click", function(event) {
+	button.addEventListener("click", function (event) {
 		event.preventDefault();
-		console.log(event.currentTarget.innerHTML);
+		// console.log(event.currentTarget.innerHTML);
 		renderReddit(event.currentTarget.innerHTML);
 	})
 })

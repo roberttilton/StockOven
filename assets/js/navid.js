@@ -1,6 +1,7 @@
 function fetchStock(stockInput) {
 	// fetch the stock chart data from the yahoo finance api
-	fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=5m&symbol=" + stockInput + "&range=1d&region=US", {
+	const backup = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=5m&symbol=" + stockInput + "&range=1d&region=US";
+	fetch("sample_responses/sample_yahoo_response.json", {
 			"method": "GET",
 			"headers": {
 				"x-rapidapi-key": "49c262adb7msh32c74269c34335fp14ab31jsn4366026eeabe",
@@ -53,26 +54,26 @@ function fetchStock(stockInput) {
 fetchStock("GME");
 
 // fetch a response for the top movers
-fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-movers?region=US&lang=en-US&start=0&count=5", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "49c262adb7msh32c74269c34335fp14ab31jsn4366026eeabe",
-		"x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
-	}
-})
-	// convert the response into json
-.then(response => response.json()).then(data => {
-	console.log(data);
-	var movers = [];
-	// create a for loop to grab from the top movers array
-	for (let i =0; i<data.finance.result[2].quotes.length; i++){
-		const stockName = data.finance.result[2].quotes[i].symbol;
+// fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-movers?region=US&lang=en-US&start=0&count=5", {
+// 	"method": "GET",
+// 	"headers": {
+// 		"x-rapidapi-key": "49c262adb7msh32c74269c34335fp14ab31jsn4366026eeabe",
+// 		"x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
+// 	}
+// })
+// 	// convert the response into json
+// .then(response => response.json()).then(data => {
+// 	console.log(data);
+// 	var movers = [];
+// 	// create a for loop to grab from the top movers array
+// 	for (let i =0; i<data.finance.result[2].quotes.length; i++){
+// 		const stockName = data.finance.result[2].quotes[i].symbol;
 		
-		var stockElement = document.createElement("div");
-		stockElement.innerText = stockName ;
-		document.querySelector("#top-movers").appendChild(stockElement);
-	}
-})
-.catch(err => {
-	console.error(err);
-});
+// 		var stockElement = document.createElement("div");
+// 		stockElement.innerText = stockName ;
+// 		document.querySelector("#top-movers").appendChild(stockElement);
+// 	}
+// })
+// .catch(err => {
+// 	console.error(err);
+// });
