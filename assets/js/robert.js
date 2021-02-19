@@ -6,13 +6,15 @@ var redditLoss = [];
 var redditNews = [];
 var redditYolo = [];
 var redditDiscussion = [];
+var redditChart = [];
 var postObject = {
 	"DD": redditDD,
 	"Gain": redditGain,
 	"Loss": redditLoss,
 	"News": redditNews,
 	"YOLO": redditYolo,
-	"Discussion": redditDiscussion
+	"Discussion": redditDiscussion,
+	"Chart": redditChart
 };
 
 function renderReddit(flair) {
@@ -26,7 +28,7 @@ function renderReddit(flair) {
 
 		redditContent.appendChild(deadFlair);
 		return;
-	}
+	} 
 
 	for (const post of postObject[flair]) {
 		redditContent.appendChild(post);
@@ -34,7 +36,8 @@ function renderReddit(flair) {
 }
 
 // fetching the data from reddit
-fetch('https://www.reddit.com/r/wallstreetbets/top.json', {})
+fetch('https://www.reddit.com/r/wallstreetbets/new.json', {
+})
 	.then(function (response) {
 		return response.json();
 	})
@@ -92,3 +95,5 @@ document.querySelectorAll(".sort-button").forEach(button => {
 		renderReddit(event.currentTarget.innerHTML);
 	})
 });
+
+console.log()
