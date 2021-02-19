@@ -77,7 +77,7 @@ async function fetchStock(stockInput) {
 	await fetch("sample_responses/sampleResponse.json", {
 		"method": "GET",
 		"headers": {
-			"x-rapidapi-key": "49c262adb7msh32c74269c34335fp14ab31jsn4366026eeabe",
+			"x-rapidapi-key": "044818423amsh7a4b9ddcb86f6bdp1a1b13jsn21dfddc15cb3",
 			"x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
 		}
 	})
@@ -85,9 +85,8 @@ async function fetchStock(stockInput) {
 		// convert the response into json
 		.then(response => response.json())
 		.then(data => {
-
 			// Create a for-loop to grab the values from the response array
-			for (let i = 0; i < data.chart.result[0].timestamp.length; i += 5) {
+			for (let i = 0; i < data.chart.result[0].timestamp.length; i ++) {
 				// Grab the timestamps from the response's array & multiply by 1000 since in unix
 				const timestamp = new Date(data.chart.result[0].timestamp[i] * 1000);
 
@@ -132,26 +131,31 @@ document.querySelectorAll(`#ranges > input[type="radio"]`).forEach(
 );
 
 // fetch a response for the top movers
-// fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-movers?region=US&lang=en-US&start=0&count=5", {
-// 	"method": "GET",
-// 	"headers": {
-// 		"x-rapidapi-key": "49c262adb7msh32c74269c34335fp14ab31jsn4366026eeabe",
-// 		"x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
-// 	}
-// })
-// 	// convert the response into json
-// .then(response => response.json()).then(data => {
-// 	console.log(data);
-// 	var movers = [];
-// 	// create a for loop to grab from the top movers array
-// 	for (let i =0; i<data.finance.result[2].quotes.length; i++){
-// 		const stockName = data.finance.result[2].quotes[i].symbol;
+fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-movers?region=US&lang=en-US&start=0&count=5", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "49c262adb7msh32c74269c34335fp14ab31jsn4366026eeabe",
+		"x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
+	}
+})
+	// convert the response into json
+.then(response => response.json()).then(data => {
+	console.log(data);
+	var movers = [];
+ 	// create a for loop to grab from the top movers array
+	document.querySelector("#top-movers").innerHTML= "";
+	for (let i =0; i<data.finance.result[2].quotes.length; i++){
+		const stockName = data.finance.result[2].quotes[i].symbol;
 		
-// 		var stockElement = document.createElement("div");
-// 		stockElement.innerText = stockName ;
-// 		document.querySelector("#top-movers").appendChild(stockElement);
-// 	}
-// })
-// .catch(err => {
-// 	console.error(err);
-// });
+		var stockElement = document.createElement("a");
+		stockElement.className= "mover-link";
+		stockElement.href="https://finance.yahoo.com/quote/"+ stockName +"?p=" + stockName ;
+		stockElement.innerText = stockName ;
+		document.querySelector("#top-movers").appendChild(stockElement);
+	}
+})
+.catch(err => {
+	console.error(err);
+});
+
+
