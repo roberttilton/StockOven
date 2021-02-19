@@ -20,10 +20,10 @@ function renderGraph(range, interval) {
 	 * 1 day : i += 288;
 	 */
 	const incrementTable  = {
-		"5m" : 1,
-		"15m" : 3,
-		"60m" : 12,
-		"1d" : 288
+		"i-5m" : 1,
+		"i-15m" : 3,
+		"i-60m" : 12,
+		"i-1d" : 288
 	};
 
 	let filteredData = [];
@@ -31,7 +31,7 @@ function renderGraph(range, interval) {
 	for (let i = 0; i < candlePoints.length; i += incrementTable[interval]) {
 		const point = candlePoints[i];
 
-		if (range === "1d" && i >= 186) {
+		if (range === "r-1d" && i >= 186) {
 			console.log("Short circuiting after one day");
 			break;
 		}
@@ -49,14 +49,11 @@ function renderGraph(range, interval) {
 			data: filteredData
 		}],
 		chart: {
-			// height: 300,
+			height: "100%",
 			type: 'candlestick',
 			zoom: {
 				enabled: true,
 				type: "xy"
-			},
-			animations: {
-				speed: 50
 			}
 		},
 		title: {text: currentStock + ' Stock Chart', align: 'left'},
