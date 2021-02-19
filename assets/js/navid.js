@@ -50,7 +50,14 @@ function renderGraph(range, interval) {
 		}],
 		chart: {
 			// height: 300,
-			type: 'candlestick'
+			type: 'candlestick',
+			zoom: {
+				enabled: true,
+				type: "xy"
+			},
+			animations: {
+				speed: 50
+			}
 		},
 		title: {text: currentStock + ' Stock Chart', align: 'left'},
 		theme: {mode: "dark"},
