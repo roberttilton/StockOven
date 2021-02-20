@@ -17,6 +17,28 @@ var postObject = {
 	"Chart": redditChart
 };
 
+function renderPost(jsonurl) {
+	fetch(jsonurl)
+	.then(function (response) {
+		return response.json();
+	})
+	.then(
+		function(data) {
+			var postType = data[i].data.children[i].data.post_hint;
+			for (var i = 0; i < data[i].data.children[i].data.length; i++) {
+				if (postType === "image") {
+					var imageRender = document.createElement('img');
+					imageRender.src = `${data[i].data.children[i].data.length}`;
+				} else if (postType.includes("video")) {
+					var videoRender = document.createElement('video');
+				} else {
+					window.open(`https://www.reddit.com${data[i].data.children[i].data.permalink}`)
+				}
+			}
+		}
+	) 
+}
+
 function renderReddit(flair) {
 	redditContent.innerHTML = "";
 
@@ -65,7 +87,8 @@ fetch('https://www.reddit.com/r/wallstreetbets/new.json')
 				redditRedirect.appendChild(redditUsers);
 				redditRedirect.appendChild(redditScore);
 				redditRedirect.addEventListener("click", function () {
-					window.open(`https://www.reddit.com${link}`, "_blank");
+					// window.open(`https://www.reddit.com${link}`, "_blank");
+					renderPost(`https://www.reddit.com${link}.json`);
 				});
 
 				redditRedirect.classList.add("reddit-post");
