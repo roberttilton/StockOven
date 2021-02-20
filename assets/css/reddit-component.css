@@ -147,7 +147,9 @@
 		cursor: pointer;
 		position: relative;
 	}
-		.sort-button:hover:before {
+		.sort-button:before {
+			opacity: 0%;
+			transition: .3s;
 			content: attr(data-tip);
 			text-align: center;
 			background-color: #42424288;
@@ -158,4 +160,7 @@
 			width: max-content;
 			left: 50%;
 			transform: translate(-50%, -50%);
+		}
+		.sort-button:hover:before {
+			opacity: 100%;
 		}
