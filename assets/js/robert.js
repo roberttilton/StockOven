@@ -95,5 +95,3 @@ document.querySelectorAll(".sort-button").forEach(button => {
 		renderReddit(event.currentTarget.innerHTML);
 	})
 });
-
-console.log()

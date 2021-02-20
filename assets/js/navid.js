@@ -29,14 +29,12 @@ function renderGraph(range, interval) {
 	let filteredData = [];
 
 	for (let i = 0; i < candlePoints.length; i += incrementTable[interval]) {
-		const point = candlePoints[i];
-
 		if (range === "r-1d" && i >= 186) {
 			console.log("Short circuiting after one day");
 			break;
 		}
 
-		filteredData.push(point);
+		filteredData.push(candlePoints[i]);
 	}
 
 	console.log(`Rendering ${filteredData.length} points`);
