@@ -101,10 +101,12 @@ main {
 		background-color: #e2e2e2;
 		color: #292828;
 		height: 100%;
+		transition: .2s;
 	}
 
 	.search-widget i:hover {
 		background-color: #d4cbcb;
+		cursor: pointer;
 	}
 
 
