@@ -2,12 +2,9 @@
 
 #stock-graph-container {
 	display: grid !important;
-	grid-template-rows: auto 2.2em;
-	row-gap: .5em;
-}
-
-#stock-graph-container {
+	grid-template-rows: auto 3em;
 	background-color: #424242;
+	row-gap: .5em;
 }
 
 label {
@@ -15,11 +12,10 @@ label {
 }
 
 #graph-controls {
-	height: 100%;
-	/* background-color: #292828; */
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	column-gap: 1%;
+	align-items: center;
 	justify-content: space-between;
 }
 
@@ -37,50 +33,42 @@ label {
 	z-index: 3;
 }
 
-#interval-ui {
+[id$="-ui"] {
 	background-color: #d84e4e;
 	height: 100%;
-	width: 25%;
 	border-radius: 20px;
 	transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 	z-index: 2;
-	left: 50%;
 	position: absolute;
 }
+	#interval-ui {
+		width: 25%;
+		left: 50%;
+	}
+	#range-ui {
+		width: 50%;
+		left: 50%;
+	}
 
-#range-ui {
-	transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-	background-color: #d84e4e;
-	height: 100%;
-	width: 50%;
-	border-radius: 20px;
-	z-index: 2;
-	position: absolute;
-	left: 50%;
-}
-
-#range-labels {
+[id$="-labels"] {
+	height: 2.2em;
 	background-color: #00a05d;
-	width: 50%;
 	border-radius: 20px;
-	justify-self: left;
 	position: relative;
 	box-shadow: 0 0 10px #969696;
 }
+	#range-labels {
+		width: 50%;
+		justify-self: left;
+	}
+		#range-labels .modes {
+			grid-template-columns: repeat(2, 1fr);
+		}
 
-#interval-labels {
-	background-color: #00a05d;
-	width: 90%;
-	border-radius: 20px;
-	justify-self: right;
-	position: relative;
-	box-shadow: 0 0 10px #969696;
-}
-
-#range-labels .modes {
-	grid-template-columns: repeat(2, 1fr);
-}
-
-#interval-labels .modes {
-	grid-template-columns: repeat(4, 1fr);
-}
+	#interval-labels {
+		width: 90%;
+		justify-self: right;
+	}
+		#interval-labels .modes {
+			grid-template-columns: repeat(4, 1fr);
+		}
