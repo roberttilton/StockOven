@@ -19,11 +19,11 @@ function renderGraph(range, interval) {
 	 * 60 minutes: - += 12;
 	 * 1 day : i += 288;
 	 */
-	const incrementTable  = {
-		"i-5m" : 1,
-		"i-15m" : 3,
-		"i-60m" : 12,
-		"i-1d" : 288
+	const incrementTable = {
+		"i-5m": 1,
+		"i-15m": 3,
+		"i-60m": 12,
+		"i-1d": 288
 	};
 
 	let filteredData = [];
@@ -54,10 +54,19 @@ function renderGraph(range, interval) {
 				type: "xy"
 			}
 		},
-		title: {text: currentStock + ' Stock Chart', align: 'left'},
-		theme: {mode: "dark"},
-		xaxis: {type: 'datetime'},
-		yaxis: {tickAmount: 10}
+		title: {
+			text: currentStock + ' Stock Chart',
+			align: 'left'
+		},
+		theme: {
+			mode: "dark"
+		},
+		xaxis: {
+			type: 'datetime'
+		},
+		yaxis: {
+			tickAmount: 10
+		}
 	};
 
 	var chart = new ApexCharts(document.querySelector("#stock-graph"), options);
@@ -77,18 +86,18 @@ async function fetchStock(stockInput) {
 	// fetch the stock chart data from the yahoo finance api
 	// const backup = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=1m&symbol=" + stockInput + "&range=5d&region=US";
 	await fetch("sample_responses/sample_yahoo_chart_response.json", {
-		"method": "GET",
-		"headers": {
-			"x-rapidapi-key": "044818423amsh7a4b9ddcb86f6bdp1a1b13jsn21dfddc15cb3",
-			"x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
+			"method": "GET",
+			"headers": {
+				"x-rapidapi-key": "044818423amsh7a4b9ddcb86f6bdp1a1b13jsn21dfddc15cb3",
+				"x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
+			}
 		}
-	})
-
+	)
 		// convert the response into json
 		.then(response => response.json())
 		.then(data => {
 			// Create a for-loop to grab the values from the response array
-			for (let i = 0; i < data.chart.result[0].timestamp.length; i ++) {
+			for (let i = 0; i < data.chart.result[0].timestamp.length; i++) {
 				// Grab the timestamps from the response's array & multiply by 1000 since in unix
 				const timestamp = new Date(data.chart.result[0].timestamp[i] * 1000);
 
@@ -132,7 +141,7 @@ fetchStock("GME").then(_ => renderGraph(currentRange, currentInterval));
 // 	document.querySelector("#top-movers").innerHTML= "";
 // 	for (let i =0; i<data.finance.result[2].quotes.length; i++){
 // 		const stockName = data.finance.result[2].quotes[i].symbol;
-		
+
 // 		var stockElement = document.createElement("a");
 // 		stockElement.className= "mover-link";
 // 		stockElement.href="https://finance.yahoo.com/quote/"+ stockName +"?p=" + stockName ;

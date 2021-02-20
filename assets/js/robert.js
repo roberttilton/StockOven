@@ -24,11 +24,11 @@ function renderReddit(flair) {
 		console.log("No posts found");
 
 		var deadFlair = $(`<div class="no-reddit">`).get()[0];
-		deadFlair.setAttribute("data-dead-flair", `No posts found for flair '${flair}'`)
+		deadFlair.setAttribute("data-dead-flair", `No posts found for flair '${flair}'`);
 
 		redditContent.appendChild(deadFlair);
 		return;
-	} 
+	}
 
 	for (const post of postObject[flair]) {
 		redditContent.appendChild(post);
@@ -36,8 +36,7 @@ function renderReddit(flair) {
 }
 
 // fetching the data from reddit
-fetch('https://www.reddit.com/r/wallstreetbets/new.json', {
-})
+fetch('https://www.reddit.com/r/wallstreetbets/new.json')
 	.then(function (response) {
 		return response.json();
 	})
