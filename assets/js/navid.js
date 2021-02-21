@@ -5,6 +5,12 @@ var currentRange = localStorage.getItem("range") || "r-5d";
 var currentInterval = localStorage.getItem("interval") || "i-60m";
 var stockInput = "";
 
+
+/**
+ * Grab every x points (determined by 'interval') over a time 'range' and plot them with ApexCharts
+ * @param {string} range the range over which to graph the stock shifts for
+ * @param {string} interval the amount of time between each point (plot what the stocks were every 5 min, half hour, etc.)
+ */
 function renderGraph(range, interval) {
 	console.log(`Called renderGraph(range=${range}, interval=${interval})`);
 
@@ -81,6 +87,10 @@ function renderGraph(range, interval) {
 }
 
 
+/**
+ * Make a fetch request to Yahoo Finance API, to be parsed and passed into renderGraph()
+ * @param {string} stockInput the 1-5 letter stock symbol to fetch stock information for
+ */
 async function fetchStock(stockInput) {
 	currentStock = stockInput;
 	// fetch the stock chart data from the yahoo finance api
