@@ -55,7 +55,7 @@ main {
 	height: 100%;
 }
 
-#top-movers-container {
+#top-movers-container, #top-movers {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
