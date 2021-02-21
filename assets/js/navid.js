@@ -38,6 +38,9 @@ function renderGraph(range, interval) {
 		if (range === "r-1d" && i < candlePoints.length - 186) {
 			console.log("Short circuiting after one day");
 			break;
+		} else if (range === "r-5d" && i < candlePoints.length - 930) {
+			console.log("Short circuiting after five days");
+			break;
 		}
 
 		filteredData.push(candlePoints[i]);
@@ -79,7 +82,10 @@ function renderGraph(range, interval) {
 				options: {
 					chart: {
 						width: "50%"
-		}
+					}
+				}
+			}
+		]
 	};
 
 	var chart = new ApexCharts(document.querySelector("#stock-graph"), options);

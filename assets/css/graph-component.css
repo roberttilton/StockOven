@@ -55,7 +55,7 @@ label {
 		left: 50%;
 	}
 	#range-ui {
-		width: 50%;
+		width: 33%;
 		left: 50%;
 	}
 
@@ -67,11 +67,11 @@ label {
 	box-shadow: 0 0 10px #969696;
 }
 	#range-labels {
-		width: 50%;
+		width: 65%;
 		justify-self: left;
 	}
 		#range-labels .modes {
-			grid-template-columns: repeat(2, 1fr);
+			grid-template-columns: repeat(3, 1fr);
 		}
 
 	#interval-labels {
