@@ -16,6 +16,9 @@
 label {
 	color: white;
 }
+	label:hover {
+		cursor: pointer;
+	}
 
 #graph-controls {
 	display: grid;
