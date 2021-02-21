@@ -72,6 +72,13 @@ function renderGraph(range, interval) {
 		},
 		yaxis: {
 			tickAmount: 10
+		},
+		responsive: [
+			{
+				breakpoint: 1650,
+				options: {
+					chart: {
+						width: "50%"
 		}
 	};
 
