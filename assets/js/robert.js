@@ -65,8 +65,8 @@ fetch('https://www.reddit.com/r/wallstreetbets/new.json')
 				redditRedirect.appendChild(redditUsers);
 				redditRedirect.appendChild(redditScore);
 				redditRedirect.addEventListener("click", function () {
-					// window.open(`https://www.reddit.com${link}`, "_blank");
-					renderPost(`https://www.reddit.com${link}.json`);
+					window.open(`https://www.reddit.com${link}`, "_blank");
+					// renderPost(`https://www.reddit.com${link}.json`);
 				});
 
 				redditRedirect.classList.add("reddit-post");
@@ -85,24 +85,24 @@ fetch('https://www.reddit.com/r/wallstreetbets/new.json')
 					.then(function (response) {
 						return response.json();
 					})
-					.then(
-						function(data) {
-							var postType = data[i].data.children[i].data.post_hint;
-							for (var i = 0; i < data[i].data.children[i].data.length; i++) {
-								if (postType === "image") {
-									var imageRender = document.createElement('img');
-									imageRender.src = "`${data[i].data.children[i].data.length}`";
-									redditRedirect.appendChild(imageRender);
-								} else if (postType.includes("video")) {
-									var videoRender = document.createElement('video');
-									videoRender.src = "`${data[i].data.children[i].data.url_overridden_by_dest}`";
-									redditRedirect.appendChild(videoRender);
-								} else {
-									window.open(`https://www.reddit.com${data[i].data.children[i].data.permalink}`)
-								}
-							}
-						}
-					) 
+					// .then(
+					// 	function(data) {
+					// 		var postType = data[i].data.children[i].data.post_hint;
+					// 		for (var i = 0; i < data[i].data.children[i].data.length; i++) {
+					// 			if (postType === "image") {
+					// 				var imageRender = document.createElement('img');
+					// 				imageRender.src = "`${data[i].data.children[i].data.length}`";
+					// 				redditRedirect.appendChild(imageRender);
+					// 			} else if (postType.includes("video")) {
+					// 				var videoRender = document.createElement('video');
+					// 				videoRender.src = "`${data[i].data.children[i].data.url_overridden_by_dest}`";
+					// 				redditRedirect.appendChild(videoRender);
+					// 			} else {
+					// 				window.open(`https://www.reddit.com${data[i].data.children[i].data.permalink}`)
+					// 			}
+					// 		}
+					// 	}
+					// ) 
 				}
 				
 				var currentFlair = data.data.children[i].data.link_flair_text;
