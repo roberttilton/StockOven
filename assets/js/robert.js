@@ -17,6 +17,10 @@ var postObject = {
 	"Chart": redditChart
 };
 
+/**
+ * render the reddit viewport
+ * @param {string} flair reddit flair to show posts for
+ */
 function renderReddit(flair) {
 	redditContent.innerHTML = "";
 
