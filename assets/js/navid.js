@@ -28,8 +28,8 @@ function renderGraph(range, interval) {
 
 	let filteredData = [];
 
-	for (let i = 0; i < candlePoints.length; i += incrementTable[interval]) {
-		if (range === "r-1d" && i >= 186) {
+	for (let i = candlePoints.length - 1; i >= 0; i -= incrementTable[interval]) {
+		if (range === "r-1d" && i < candlePoints.length - 186) {
 			console.log("Short circuiting after one day");
 			break;
 		}
