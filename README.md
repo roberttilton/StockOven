@@ -37,7 +37,7 @@ Creator Contributions
     - Parse Wallsreetbets subreddit
     - Add flare buttons to categorize Reddit posts
 
-- Navi Ebrahimi
+- Navid Ebrahimi
     - Fetch Yahoo Finance API
     - Display chart data to page
 
@@ -49,7 +49,7 @@ Creator Contributions
 
 
 
-
+[Deployed Link](https://krushilnaik.github.io/StockOven/)
 
 
 
