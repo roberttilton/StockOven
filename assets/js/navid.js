@@ -107,9 +107,8 @@ function renderGraph(range, interval) {
 async function fetchStock(stockInput) {
 	currentStock = stockInput;
 	// fetch the stock chart data from the yahoo finance api
-	// const backup = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=5m&symbol=" + stockInput + "&range=1mo&region=US";
-	// await fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=5m&symbol=" + stockInput + "&range=1mo&region=US", {
-	await fetch("sample_responses/sample_yahoo_chart_response.json", {
+	await fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=5m&symbol=" + stockInput + "&range=1mo&region=US", {
+	// await fetch("sample_responses/sample_yahoo_chart_response.json", {
 		"method": "GET",
 		"headers": {
 			"x-rapidapi-key": "f092a8eb4fmsh4f233fe4c58b077p1e4652jsncb1161a414f6",
@@ -148,9 +147,8 @@ async function fetchStock(stockInput) {
 fetchStock("GME").then(_ => renderGraph(currentRange, currentInterval));
 
 // fetch a response for the top movers
-// var backup = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-movers?region=US&lang=en-US&start=0&count=5";
-// fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-movers?region=US&lang=en-US&start=0&count=5", {
-fetch("sample_responses/sample_yahoo_movers_response.json", {
+fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-movers?region=US&lang=en-US&start=0&count=5", {
+// fetch("sample_responses/sample_yahoo_movers_response.json", {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-key": "f092a8eb4fmsh4f233fe4c58b077p1e4652jsncb1161a414f6",

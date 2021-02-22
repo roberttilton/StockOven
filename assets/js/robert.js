@@ -40,7 +40,7 @@ function renderReddit(flair) {
 }
 
 // fetching the data from reddit
-fetch('https://www.reddit.com/r/wallstreetbets/new.json')
+fetch('https://www.reddit.com/r/wallstreetbets/hot.json')
 	.then(function (response) {
 		return response.json();
 	})

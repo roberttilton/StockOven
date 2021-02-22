@@ -21,11 +21,29 @@ label {
 	}
 
 #graph-controls {
+	padding-top: 3%;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	column-gap: 1%;
 	align-items: center;
 	justify-content: space-between;
+}
+
+#range-labels::before,
+#interval-labels::before {
+	font-size: 14px;
+	color: aliceblue;
+	position: absolute;
+	bottom: 100%;
+	left: 2%;
+}
+
+#range-labels::before {
+	content: "Range:";
+}
+
+#interval-labels::before {
+	content: "Step:";
 }
 
 #ranges, #intervals {
