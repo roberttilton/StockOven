@@ -34,8 +34,8 @@ Creator Contributions
     - Code refactoring
 
 - Robert Tilton
-    - Parse Wallsreetbets subreddit
-    - Add flare buttons to categorize Reddit posts
+    - Parse WallStreetBets subreddit
+    - Add flair buttons to categorize Reddit posts
 
 - Navid Ebrahimi
     - Fetch Yahoo Finance API
@@ -47,6 +47,7 @@ Creator Contributions
 
 
 
+![sitescreenshot](./assets/images/stockoven.png)
 
 
 [Deployed Link](https://krushilnaik.github.io/StockOven/)
